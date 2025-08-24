@@ -337,7 +337,7 @@ header{
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 95%;
   background-color: rgba(0,0,0,0.5); /* semi-transparent background */
   display: flex;              /* center the note box */
   justify-content: center;

@@ -81,7 +81,7 @@ async function loadNotes() {
             deleteBtn.addEventListener("click", async e => {
                 e.stopPropagation();
                 if (confirm("Delete this note?")) {
-                    const delRes = await fetch(`${API}/api/notes/${note._id}`, {
+                    const delRes = await fetch(`/api/notes/${note._id}`, {
                         method: "DELETE",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ email })
@@ -137,14 +137,14 @@ saveBtn.addEventListener("click", async () => {
 
     try {
         if (editId) {
-            const res = await fetch(`${API}/api/notes/${editId}`, {
+            const res = await fetch(`/api/notes/${editId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title, content: text, email })
             });
             if (!res.ok) throw new Error("Update failed");
         } else {
-            const res = await fetch(`${API}/api/notes`, {
+            const res = await fetch(`/api/notes`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ title, content: text, email })
@@ -180,7 +180,7 @@ savebtn.addEventListener("click", async () => {
         const text = viewtxt.value.trim();
         if (!title || !text) return;
 
-        const res = await fetch(`${API}/api/notes/${id}`, {
+        const res = await fetch(`/api/notes/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title, content: text, email })

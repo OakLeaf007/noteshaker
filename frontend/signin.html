@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel= "stylesheet" href="signin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Shaker</title>
+     <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <header>
+        <div class = "logo"><a href="index.html">Note Shaker</a></div>
+        <nav>
+           
+
+          
+        </nav>
+
+    </header>
+    
+
+
+
+    <div class="frm" >
+        <div class="elm" style="text-align: center; height:50px;">
+            <label style="margin: 10px; color:#ff3f80 ; font-size: 30px;">Note Shaker<label>
+        
+        </div>
+        <div class="elm" style="text-align: center; height:50px;">
+            <label style="margin: 10px;">Welcome Back<label>
+        
+        </div>
+        <form  class="form" id="login-form" >
+           
+            
+            <div class="element">
+                <div class="span"><span class="txt">Email:</span></div>
+            <input type="text" placeholder="Email" id="usr" required>
+            
+
+
+           <div class="span"><span class="txt">Password:</span></div>
+            <input type="password" placeholder="password" id="pass" required>
+            </div>
+
+
+          <div class="element inline">
+  <input id="toggle" class="check" type="checkbox">
+  <span class="visible">Password visibility</span>
+</div>
+            <p id="message" style="text-align: center; font-size: 12px;"></p>
+            <div class="element">
+            <button id="login" type="submit" class="btn" >Log in</button>
+            </div>
+
+             <div class="elemnt">
+        <span class="signup">or </span>
+        </div>
+        <div class="element">
+            
+              
+             
+            
+  <div id="g_id_onload"
+       data-client_id="1067926874129-r98euqd2smkom245g2fce2oc8402brjh.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse" style=" max-width: 80%; text-align: center;">
+  </div>
+  <div class="g_id_signin" style="width: 80%; text-align: center; margin:
+  10px auto;"></div>
+
+  <h3 id="user"></h3>
+
+
+             
+                </div>
+            
+        </form>
+        
+
+
+
+
+        <div class="elemnt">
+        <span class="signup">Don't have an account, <a href="signup.html">sign up</a> </span>
+        </div>
+        
+    </div>
+    
+
+<div class="bar"></div>
+
+      <footer>
+    
+     <div class="footer" style="padding: 20px; text-align: center; margin: 20px;">
+       <p>&copy; 2025 Note Shaker</p>
+        <p> Oak Leaf</p>
+        </div>
+   
+  </footer>
+     
+
+
+
+    
+<script src = "script.js"></script>
+<script src = "signin.js"></script>
+
+</body>
+</html>

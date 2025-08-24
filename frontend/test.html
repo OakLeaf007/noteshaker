@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fullscreen Note Maker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    #notes-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 15px;
+      position: relative;
+    }
+    .add-btn {
+      width: 80px;
+      height: 80px;
+      font-size: 36px;
+      font-weight: bold;
+      border: 2px solid #333;
+      border-radius: 10px;
+      background: #f0f0f0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    /* Fullscreen editor */
+    .editor-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .editor-overlay input {
+      font-size: 20px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .editor-overlay textarea {
+      flex: 1;
+      font-size: 16px;
+      padding: 10px;
+      resize: none;
+    }
+    .editor-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .editor-buttons button {
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    /* Saved note tile */
+    .saved-note {
+      width: 120px;
+      height: 120px;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background: #d9f1ff;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      font-weight: bold;
+      padding: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      position: relative;
+    }
+    /* 3-dot menu */
+    .menu {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+      font-size: 18px;
+      user-select: none;
+    }
+    .menu-options {
+      display: none;
+      position: absolute;
+      top: 25px;
+      right: 5px;
+      background: white;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+    .menu-options div {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .menu-options div:hover {
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="padding: 15px;">My Notes</h2>
+  <div id="notes-container">
+    <button class="add-btn">+</button>
+  </div>
+
+  <script>
+    const container = document.getElementById("notes-container");
+    const notes = []; // temporary store
+
+    // Create or edit a note
+    function openEditor(noteIndex = null) {
+      const editor = document.createElement("div");
+      editor.classList.add("editor-overlay");
+
+      const title = document.createElement("input");
+      title.type = "text";
+      title.placeholder = "Note title";
+
+      const textarea = document.createElement("textarea");
+      textarea.placeholder = "Write your note...";
+
+      if (noteIndex !== null) {
+        title.value = notes[noteIndex].title;
+        textarea.value = notes[noteIndex].content;
+      }
+
+      const btnContainer = document.createElement("div");
+      btnContainer.classList.add("editor-buttons");
+
+      const saveBtn = document.createElement("button");
+      saveBtn.textContent = "Save";
+
+      const cancelBtn = document.createElement("button");
+      cancelBtn.textContent = "Cancel";
+
+      saveBtn.onclick = () => {
+        const newNote = {
+          title: title.value || "Untitled",
+          content: textarea.value
+        };
+        if (noteIndex !== null) {
+          notes[noteIndex] = newNote;
+        } else {
+          notes.push(newNote);
+        }
+        renderNotes();
+        editor.remove();
+      };
+
+      cancelBtn.onclick = () => editor.remove();
+
+      btnContainer.appendChild(cancelBtn);
+      btnContainer.appendChild(saveBtn);
+      editor.appendChild(title);
+      editor.appendChild(textarea);
+      editor.appendChild(btnContainer);
+      document.body.appendChild(editor);
+    }
+
+    function renderNotes() {
+      container.innerHTML = ""; // clear
+      notes.forEach((note, i) => {
+        const saved = document.createElement("div");
+        saved.classList.add("saved-note");
+
+        // Note title
+        const titleSpan = document.createElement("span");
+        titleSpan.textContent = note.title;
+        saved.appendChild(titleSpan);
+
+        // 3-dot menu
+        const menu = document.createElement("div");
+        menu.classList.add("menu");
+        menu.textContent = "⋮";
+
+        const menuOptions = document.createElement("div");
+        menuOptions.classList.add("menu-options");
+
+        const deleteBtn = document.createElement("div");
+        deleteBtn.textContent = "Delete";
+        menuOptions.appendChild(deleteBtn);
+
+        saved.appendChild(menu);
+        saved.appendChild(menuOptions);
+
+        // Menu toggle
+        menu.onclick = (e) => {
+          e.stopPropagation();
+          menuOptions.style.display = menuOptions.style.display === "block" ? "none" : "block";
+        };
+
+        // Delete note
+        deleteBtn.onclick = (e) => {
+          e.stopPropagation();
+          notes.splice(i, 1);
+          renderNotes();
+        };
+
+        // Open editor
+        saved.onclick = () => openEditor(i);
+
+        container.appendChild(saved);
+      });
+
+      // Add the + button at the end
+      const plusBtn = document.createElement("button");
+      plusBtn.classList.add("add-btn");
+      plusBtn.textContent = "+";
+      plusBtn.onclick = () => openEditor(null);
+      container.appendChild(plusBtn);
+    }
+
+    // Initial render
+    renderNotes();
+  </script>
+
+</body>
+</html>

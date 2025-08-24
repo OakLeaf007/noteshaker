@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel= "stylesheet" href="logged.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Shaker</title>
+</head>
+<body>
+  <main>
+
+    <!-- header -->
+    <header>
+        <div class = "logo"><a href="shaker.html" style="text-decoration: none; color: #ff3f80;"> Note Shaker</a></div>
+        <nav>
+               
+          </ul>
+            <ul class = "nav-links">
+                
+
+                <li><a id="logout">Log out</a></li>
+                <li><a href="shaker.html">About</a></li>
+             
+               
+            </ul>
+
+            <div class="hamburger">
+                <span></span>
+                
+                <span></span>
+
+            </div>
+        </nav>
+
+    </header>
+
+<!--Note container -->
+ <div id="popup" style="
+       display:none; 
+       position:fixed; top:30%; left:50%; transform:translate(-50%, -50%);
+       background:white;  border-radius:4px;
+       padding:20px; text-align:center; z-index:1000; width:50%;
+       box-shadow:0 4px 8px rgba(0,0,0,0.3);">
+    <p>🎉 Welcome to Note Shaker! This site is for testing purpose only and database storage is limited so we limited the amount of characters it can hold per notes. Have fun.</p>
+    <button id="closePopup" style="
+            margin-top:10px; padding:5px 10px; 
+            border:none; background:#333; color:white;
+            border-radius:5px; cursor:pointer; letter-spacing: 1px;">Okie dokie</button>
+  </div>
+
+
+
+<div class="cont">
+ 
+  <div id="notes-container">
+    
+    <p id="usrname" style="text-align: center;">Welcome</p>
+    <button id="addbtn" class="add-btn">🖋️</button>
+    <div class="label" style="padding-top: 15px;">
+<label>My notes:</label><span id="count" style="font-size: 12px;"> 0 note(s) found.</span></div>
+
+<!-- this is for saved note -->
+<div class="NoteDiv template" style="display: none;"><span class="note-title">hello</span><br>
+  <span class="note-text" style="font-size: 12px; padding: 1px;">hello</span>
+  
+  <div class="menu">
+    <span class="dot">⋮</span>
+    <div class="options">
+      <button class="delete">Delete</button>
+    </div>
+  </div>
+</div>
+  </div>
+  <div class="NoteDiv template" style="display:none;">
+  <span class="note-title"></span><br>
+  <span class="note-text" style="font-size: 12px;"></span>
+  <div class="menu">
+    <span class="dot">⋮</span>
+    <div class="options">
+      <button class="delete">Delete</button>
+    </div>
+  </div>
+</div>
+
+  
+
+ 
+
+<!-- note overlay -->
+  <div class="note-overlay" id="noteOverlay">
+  <div class="note-box">
+     <input type="text" id="noteTitle" maxlength="25" placeholder="Note Title">
+    <textarea placeholder="Write your note here...(max 1000 character)" id="text" maxlength="1000"></textarea>
+    <div class="buttons">
+      <span id="msg" style="padding: 10px;"></span>
+      <button id="cancelBtn">Cancel</button>
+      <button id="saveBtn">Save</button>
+    </div>
+  </div>
+  </div>
+
+<!-- note view -->
+  <div class="note-view" id="noteView">
+  <div class="view-box">
+     <input type="text" class="viewtitle"s id="viewTitle" maxlength="25" disabled>
+    <textarea  class="viewtxt" disabled id="viewText" maxlength="5000"></textarea>
+    
+ 
+    
+  
+    <div class="btns">
+    
+      <button id="BackBtn">Back</button>
+      <button id="EditBtn">Edit</button>
+       <button id="savebtn">save</button>
+    </div>
+  </div>
+  </div>
+
+</main>
+
+<!-- footer and separator bar -->
+
+     <div class="btm">
+<div class="bar"></div>
+
+      <footer>
+    
+     <div class="footer" style="padding: 20px; text-align: center; margin: 20px;">
+       <p>&copy; 2025 Note Shaker</p>
+       <p> Oak Leaf</p>
+        </div>
+   
+  </footer>
+  </div>
+
+<script src = "hamburger.js"></script>
+<script src = "notes.js"></script>
+</body>
+</html>

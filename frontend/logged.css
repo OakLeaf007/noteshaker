@@ -1,0 +1,445 @@
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+     background-color: #F9FAFB;
+     letter-spacing: 2px;
+     color: teal;
+     display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+     
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px;
+    align-items: center;
+    background-color:#121212;
+   
+    box-shadow: 0px 4px 4px #333;
+    
+}
+
+.logo{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    
+    color: #ff3f80;
+    
+}
+
+
+.nav-links{
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    
+
+}
+ .nav-links li a{
+  font-size: 15px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-color: #333;
+    border-radius: 5px;
+    transition:0.5s;
+    color: #ffffff;
+        
+    }
+
+    .nav-links li a:hover {
+  background-color: #ff3f80;
+  color:#ffffff;
+  font-size: 16px;
+}
+
+.hamburger{
+    display: none;
+   flex-direction: column;
+   cursor: pointer;
+   gap: 5px;
+}
+.hamburger span{
+    width: 25px;
+    height: 3px;
+    background-color: #96c3eb;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    
+
+}
+
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0; /* hide middle bar */
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px){
+   
+    .nav-links{
+        position:absolute;
+        top: 25px;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #171818;
+        display: none;
+        text-align: center;
+        gap: 20px;
+        padding: 20px;
+        
+        border-radius: 4px;
+    }
+    .nav-links a{
+       
+   
+    
+       
+
+    }
+
+.nav-links.active{
+    display: flex;
+}
+.hamburger{
+    padding: 10px;
+    display: flex;
+}
+}
+
+/*This part contains note part*/
+.cont{
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+   
+}
+
+.label{
+    height: 30px;
+    text-align: left;
+   
+    
+    
+    
+}
+.notes-container{
+  width: 90%;
+  
+    
+   
+   
+}
+
+ .add-btn {
+    position: fixed;  
+    bottom:8%;          /* distance from bottom */
+  right: 20px; 
+   z-index: 1000; 
+      width: 80px;
+      height: 80px;
+      font-size: 36px;
+      font-weight: bold;
+      border:none;
+    
+      border-top-left-radius: 10px;
+       border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      background: #fb8c92;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+       transition: all 0.3s ease;
+      
+    }
+.add-btn:hover{
+    background-color: #ff3f80;
+    font-size: 40px;
+    
+   
+     
+}
+
+/*Note Div*/
+.NoteDiv{
+  height: 42px;
+ 
+  border: none;
+  display: none;
+  position: relative;
+  cursor: pointer;
+  border-color: #ff3f80;
+  
+  border-top-right-radius:  10px;
+  padding : 10px;
+  margin-top : 10px;
+  background-Color: #f8bfbfff;
+ transition:  all 0.3s ease;
+}
+
+.menu{
+  transition: all 0.3s ease;
+  text-align: center;
+  background-color: ;
+  width: 2%;
+   position: absolute;
+  top: 5px;
+  
+  right: 5px;
+}
+.dot{
+   letter-spacing: 2px;
+  font-size:20px;
+  text-align: center;
+  color:black;
+}
+.options{
+  transition: all 0.3s ease;
+  
+  display:none;
+  position: absolute;
+  top: 30px;
+  right:0;
+  z-index: 1;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+}
+.options button {
+  border-radius: 5px;
+  font-size: 12px;
+  display: k;
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu:hover  {
+  transition: all 0.3s ease;
+  display: block;
+}
+.options button:hover{
+  background-color: #ff3f80;
+  color: #FFF2EB;
+ 
+  
+
+}
+
+
+
+
+
+/*Note Overlay*/
+.note-overlay{
+ 
+   position: fixed;            /* fixed to viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 95%;
+  background-color: rgba(0,0,0,0.5); /* semi-transparent background */
+  display: flex;              /* center the note box */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;     
+}
+ .note-box {
+ 
+    height: 90%;
+
+
+     background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+ width: 90%;
+  max-width: 90%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  }
+
+  #noteTitle{
+    background-color: #FFDCDC;
+    font-size: 18px;
+   letter-spacing: 2px;
+    border-radius: 10px;
+    padding: 10px;
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  #noteTitle input:focus{
+    border-bottom: none;
+  }
+
+
+.note-box textarea {
+   background-color:#FFF2EB;
+    flex: 1;
+      font-size: 16px;
+      border-top: ;
+      border-bottom-right-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      
+      resize: none;
+      scroll-behavior:smooth;
+    }
+    
+  .note-box .buttons {
+  
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .note-box button {
+    border: none;
+     border-radius: 10px;
+     
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .note-box button:hover{
+    background-color: #ff3f80;
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+
+.noteDiv:hover{
+  background-color: #ff3f80;
+
+}
+
+/*View note*/
+.note-view{
+      
+   position: fixed;            /* fixed to viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5); /* semi-transparent background */
+  display: flex;              /* center the note box */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;     
+
+}
+
+ .view-box {
+    margin: 10px auto;
+    background: #fff;
+    width: 90%;
+    
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+  }
+
+
+/*viewport note*/
+
+  .viewtitle{
+    text-align: center;
+    background-color: #FFDCDC;
+    font-size: 18px;
+   letter-spacing: 2px;
+    border-radius: 10px;
+    padding: 10px;
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  #viewtitle input:focus{
+    border-bottom: none;
+  }
+
+
+.viewtxt  {
+   background-color:#FFF2EB;
+    flex: 1;
+      font-size: 16px;
+      border-top: none;
+      border-bottom-right-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      
+      resize: none;
+      scroll-behavior:smooth;
+    }
+
+
+      .view-box .btns {
+  
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+ 
+  .view-box button {
+    border: none;
+     border-radius: 10px;
+    
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+
+  
+  .view-box button:hover{
+    background-color: #ff3f80;
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+
+
+
+/*Bottom bar and footer*/
+main{
+    flex: 1;
+    pad: 20px;
+}
+.bar{
+  margin: 20px auto;
+    padding: 1px;
+    height: 1px;
+    border-radius: 2px;
+    flex: 1;
+    
+    width: 90%;
+    background-color: #333;
+}
+footer{
+
+ 
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btm{
+ 
+}

@@ -43,7 +43,7 @@ document.getElementById("logout").addEventListener("click", () => {
 // Load notes for this email
 async function loadNotes() {
     try {
-        const res = await fetch(`${API}/api/notes/${email}`);
+        const res = await fetch(`/api/notes/${email}`);
         if (!res.ok) throw new Error("Failed to fetch notes");
         const notes = await res.json();
 

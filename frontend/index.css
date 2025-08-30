@@ -4,8 +4,9 @@ body{
     font-family: Arial, Helvetica, sans-serif;
      background-color: #F9FAFB;
      line-height: 30px;
-    letter-spacing: 2px;
-    color: teal;
+    letter-spacing:1px;
+
+    color: #121212;
      
 }
 
@@ -137,7 +138,7 @@ header{
 
     .container {
         width: 90%;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             word-spacing: 2px;
             
 
@@ -153,7 +154,7 @@ padding:20px;
     }
     p{
         line-height: 30px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
    
     }
 
@@ -164,7 +165,7 @@ padding:20px;
 
       flex: 1;
       padding: 20px;
-      color: teal;
+      color: #121212;
     }
 
     .left {
@@ -178,12 +179,7 @@ padding:20px;
          transition: all 0.3s ease-in;
      
     }
-    .left:hover{
-   
-      margin-top: 5px;
-   
-
-    }
+  
 
     .right {
        display: flex;
@@ -197,12 +193,7 @@ padding:20px;
       background-color: #FFFCFB;
       transition: all 0.3s ease-in;
     }
-     .right:hover{
-     
-      margin-top: 5px;
-   
-
-    }
+  
    
     /* On small screens stack them */
     @media (max-width: 768px) {
@@ -220,7 +211,7 @@ padding:20px;
 
 .left{
   border-right: none;
-  border-bottom: 2px solid #121212;
+  
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
 }
@@ -232,7 +223,7 @@ padding:20px;
 
 
     .btn{
-       letter-spacing: 2px;
+       letter-spacing: 1px;
     height: 40px;
     margin: 20px auto;
     background-color: #f6739e;
@@ -241,7 +232,7 @@ padding:20px;
     display: inline-block;
     border: none;
     border-radius: 2px;
-    width: 80%;
+    width: 70%;
     max-width:400px;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -276,4 +267,10 @@ a{
   text-align: center;
   width: 80%;
   
+}
+
+.contact{
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px;
 }

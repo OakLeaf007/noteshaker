@@ -24,7 +24,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     }
 });
 
-// Google login without JWT
+// Google login 
 function handleCredentialResponse(response) {
     fetch(`/api/auth/google-login`, {
         method: "POST",

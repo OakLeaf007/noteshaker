@@ -253,6 +253,11 @@ a:link,a:visited{
    
 
 }
+#g_id_onload, .g_id_signin {
+  display: flex;
+  justify-content: center;
+}
+
 
 @media (max-width: 768px){
 
